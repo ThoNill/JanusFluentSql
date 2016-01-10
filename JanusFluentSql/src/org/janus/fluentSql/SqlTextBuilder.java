@@ -3,7 +3,6 @@ package org.janus.fluentSql;
 public class SqlTextBuilder {
 	private StringBuilder text = new StringBuilder();
 	private Status status;
-	boolean hasCommas = true;
 
 	public SqlTextBuilder(Status status) {
 		this.status = status;

@@ -1,8 +1,8 @@
 package org.janus.fluentSql;
 
-import java.util.Vector;
+import java.util.List; import java.util.ArrayList;
 
-public class ZuordnungsListe extends Vector<Zuordnung> {
+public class ZuordnungsListe extends ArrayList<Zuordnung> {
 
 	static ZuordnungsListe zuordnungen = new ZuordnungsListe();
 

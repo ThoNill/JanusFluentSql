@@ -4,9 +4,9 @@ import org.janus.helper.DebugAssistent;
 
 public class Function {
 
-	public static Function max = new Function("max");
-	public static Function min = new Function("min");
-	public static Function sum = new Function("sum");
+	public static final Function max = new Function("max");
+	public static final Function min = new Function("min");
+	public static final Function sum = new Function("sum");
 
 	private String name;
 

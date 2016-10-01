@@ -12,10 +12,14 @@ import static test.janus.tables.Tables.adresse;
 import static test.janus.tables.Tables.blz;
 import static test.janus.tables.Tables.kunde;
 
+import org.apache.log4j.Logger;
 import org.janus.fluentSql.Field;
 import org.junit.Test;
 
 public class FluentSqlTest {
+    private static final String EXCEPTION_ERWARTET = "Exception erwartet";
+    private static final Logger LOG = Logger.getLogger(FluentSqlTest.class);
+
 
 	public FluentSqlTest() {
 	}
@@ -27,7 +31,7 @@ public class FluentSqlTest {
 			s.toString();
 			fail("Es trat keine Exception auf!");
 		} catch (Exception e1) {
-
+		    LOG.error(EXCEPTION_ERWARTET,e1);
 		}
 
 		s = select().column("name").from("kunde");
@@ -69,7 +73,7 @@ public class FluentSqlTest {
 			s.toString();
 			fail("Es trat keine Exception auf!");
 		} catch (Exception e1) {
-
+		    LOG.error(EXCEPTION_ERWARTET,e1);
 		}
 		try {
 			s = select(column("name").as("Kundenname"), column("plz"))
@@ -78,7 +82,7 @@ public class FluentSqlTest {
 			s.toString();
 			fail("Es trat keine Exception auf!");
 		} catch (Exception e1) {
-
+		    LOG.error(EXCEPTION_ERWARTET,e1);
 		}
 		try {
 			s = select(column("name").as("Kundenname"), column("plz"))
@@ -87,7 +91,7 @@ public class FluentSqlTest {
 			s.toString();
 			fail("Es trat keine Exception auf!");
 		} catch (Exception e1) {
-
+		    LOG.error(EXCEPTION_ERWARTET,e1);
 		}
 
 		s = select(column("name").as("Kundenname"), column("plz"))
@@ -130,7 +134,7 @@ public class FluentSqlTest {
 			s.toString();
 			fail("Es trat keine Exception auf!");
 		} catch (Exception e1) {
-
+		    LOG.error(EXCEPTION_ERWARTET,e1);
 		}
 		s = select(column("name").as("Kundenname"), column("plz"))
 				.from("kunde").and("adresse").alias("a").where()
@@ -153,7 +157,7 @@ public class FluentSqlTest {
 			s.toString();
 			fail("Es trat keine Exception auf!");
 		} catch (Exception e1) {
-
+		    LOG.error(EXCEPTION_ERWARTET,e1);
 		}
 		s = select(column("name").as("Kundenname"), column("plz"))
 				.from("kunde").and("adresse").alias("a").where()
@@ -181,7 +185,7 @@ public class FluentSqlTest {
 			s.toString();
 			fail("Es trat keine Exception auf!");
 		} catch (Exception e1) {
-
+		    LOG.error(EXCEPTION_ERWARTET,e1);
 		}
 
 		s = create("Kunde").field("name").t_char(20);

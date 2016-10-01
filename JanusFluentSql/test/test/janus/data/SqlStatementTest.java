@@ -4,6 +4,7 @@ package test.janus.data;
 
 
 import static com.ninja_squad.dbsetup.Operations.deleteAllFrom;
+
 import static com.ninja_squad.dbsetup.Operations.insertInto;
 import static com.ninja_squad.dbsetup.Operations.sequenceOf;
 import static org.janus.fluentSql.SqlCreator.create;
@@ -17,6 +18,7 @@ import java.sql.Statement;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
 import org.janus.actions.DataValue;
 import org.janus.actions.HandleValue;
 import org.janus.data.DataDescription;
@@ -33,6 +35,7 @@ import com.ninja_squad.dbsetup.destination.DataSourceDestination;
 import com.ninja_squad.dbsetup.operation.Operation;
 
 public class SqlStatementTest {
+    public static final Logger LOG = Logger.getLogger(SqlStatementTest.class);
 
 	public SqlStatementTest() {
 	}
@@ -45,9 +48,12 @@ public class SqlStatementTest {
 					.t_char(20);
 			Statement stmt = con.createStatement();
 			stmt.execute(sql.toString());
+			stmt.close();
 		} catch (SQLException ex) {
 			if (ex.getErrorCode() != 30000) {
-				ex.printStackTrace();
+				LOG.error("Fehler",ex);
+			} else {
+			    LOG.warn(ex);
 			}
 		}
 
@@ -84,7 +90,7 @@ public class SqlStatementTest {
 			assertEquals(1, testAction.performed);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error("unerwartete Exception",e);;
 			fail(e.getMessage());
 		}
 	}
@@ -118,6 +124,7 @@ public class SqlStatementTest {
 			assertEquals(2, testAction.performed);
 
 		} catch (Exception e) {
+		    LOG.error("unerwartete Exception ",e);
 			fail(e.getMessage());
 		}
 	}
@@ -152,6 +159,7 @@ public class SqlStatementTest {
 			assertEquals(2, testAction.performed);
 
 		} catch (Exception e) {
+		    LOG.error("unerwartete Exception ",e);
 			fail(e.getMessage());
 		}
 	}

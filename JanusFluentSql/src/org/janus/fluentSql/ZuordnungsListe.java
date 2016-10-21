@@ -1,6 +1,6 @@
 package org.janus.fluentSql;
 
-import java.util.List; import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class ZuordnungsListe extends ArrayList<Zuordnung> {
 
